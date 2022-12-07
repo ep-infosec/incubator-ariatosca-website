@@ -1,0 +1,16 @@
+<ul class="nav navbar-nav navbar-right">
+	<li class="home"><a href="/">{{ site.title }}</a></li>
+	{% for link in site.data.navigation %}
+    {% if link.url contains 'http' %}
+        {% assign domain = '' %}
+        {% else %}
+        {% assign domain = site.url %}
+    {% endif %}
+    <li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}
+			{% if link.url contains 'http' %}
+			<i class="fa fa-external-link" aria-hidden="true"></i>
+			{% endif %}
+				</a>
+		</li> 
+  {% endfor %}
+</ul>
